@@ -105,6 +105,22 @@ All right, there is so much more that we can say about AWS global infrastructure
 
 ### Provision AWS Resources Part 1
 
+In AWS everything is an API service - configure, provision and manage all AWS services with API Calls
+
+- AWS Management Console
+- AWS CLI
+- AWS SDK
+- Other tools like AWS CLoudFormaton (IaaC)
+
+
+AWS Management console is browser based.  Good for getting sgarted with AWS or build test evnironments.
+
+Use AWS CLI to script configurations, etc.  Scripts are reusable and can be started by other resources.
+
+
+AWS SDK - Allow you to interact with AWS sources using other languages.  
+
+
 #### Transcript
 We've been talking about a few different AWS resources as well as the AWS global infrastructure. You may be wondering, how do I actually interact with these services? And the answer is APIs. In AWS, everything is an API call. An API is an application programming interface. And what that means is, there are pre determined ways for you to interact with AWS services. And you can invoke or call these APIs to provision, configure, and manage your AWS resources. 
 
@@ -117,3 +133,36 @@ However, once you are up and running in a production type environment, you don't
 The answer to this problem is to use tools that allow you to script or program the API calls. One tool you can use is the AWS Command Line Interface or CLI. The CLI allows you to make API calls using the terminal on your machine. This is different than the visual navigation style of the Management Console. Writing commands using the CLI makes actions scriptable and repeatable. So, you can write and run your commands to launch an EC2 Instance. And if you want to launch another, you can just run the pre-written command again. This makes it less susceptible to human error. And you can have these scripts run automatically, like on a schedule or triggered by another process. 
 
 Automation is very important to having a successful and predictable cloud deployment over time. Another way to interact with AWS is through the AWS Software Development Kits or SDKs. The SDKs allow you to interact with AWS resources through various programming languages. This makes it easy for developers to create programs that use AWS without using the low level APIs, as well as avoiding that manual resource creation that we just talked about. More on that in a bit.
+
+### Provision AWS Resources Part 2
+
+AWS Management Console, AWS CLI, and AWS SDK are DIY tools
+
+
+AWS Elastic Beanstalk that helps you launch EC2 instances by providing application and desire configuration and beanstal does the rest.  You don't have to provision and manage pieces individaull.  THis lets you focus on your app and not the infrastrctre
+
+AWS CloudFormation is a IaaC tool that allows you define what you need using JSON or ....  It uses templaces. AWS Cloudformation support more than EC2 instances including databases, etc.
+
+AWS Beanastalk and AWS CloudFormation are managed tools
+
+#### Transcript
+All right, let's continue to talk about how to interact with AWS. You have the AWS Management Console, the CLI, and the SDKs, which are all sort of do it yourself ways to provision and manage your AWS environment. If you want to provision a resource, you can log into the console and point and click, you can write some commands, or you can write some programs to do it. There are also other ways you can manage your AWS environment using managed tools like AWS Elastic Beanstalk, and AWS CloudFormation. 
+
+AWS Elastic Beanstalk is a service that helps you provision Amazon EC2-based environments. Instead of clicking around the console or writing multiple commands to build out your network, EC2 instances, scaling and Elastic Load Balancers, you can instead provide your application code and desired configurations to the AWS Elastic Beanstalk service, which then takes that information and builds out your environment for you. AWS Elastic Beanstalk also makes it easy to save environment configurations, so they can be deployed again easily. AWS Elastic Beanstalk gives you the convenience of not having to provision and manage all of these pieces separately, while still giving you the visibility and control of the underlying resources. You get to focus on your business application, not the infrastructure. 
+
+Another service you can use to help create automated and repeatable deployments is AWS CloudFormation. AWS CloudFormation is an infrastructure as code tool that allows you to define a wide variety of AWS resources in a declarative way using JSON or YAML text-based documents called CloudFormation templates. A declarative format like this allows you to define what you want to build without specifying the details of exactly how to build it. CloudFormation lets you define what you want and the CloudFormation engine will worry about the details on calling APIs to get everything built out. 
+
+It also isn't just limited to EC2-based solutions. CloudFormation supports many different AWS resources from storage, databases, analytics, machine learning, and more. Once you define your resources in a CloudFormation template, CloudFormation will parse the template and begin provisioning all the resources you defined in parallel. CloudFormation manages all the calls to the backend AWS APIs for you. You can run the same CloudFormation template in multiple accounts or multiple regions, and it will create identical environments across them. There is less room for human error as it is a totally automated process. 
+
+To recap, the AWS Management Console is great for learning and providing a visual for the user. The AWS Management Console is a manual tool. So right off the bat, it isn't a great option for automation. You can instead use the CLI to script your interactions with AWS using the terminal. You can use the SDKs to write programs to interact with AWS for you or you can use manage tools like AWS Elastic Beanstalk or AWS CloudFormation.
+
+### Summary Transcript
+Awesome stuff, I mean, we covered a lot of ground in here. And I don't mean that just because we talked about AWS global infrastructure. 
+
+But seriously, we covered how logical clusters of data centers make up Availability Zones, Availability Zones in turn make up Regions, and those are spread globally. You then choose what Regions and Availability Zones you want to operate out of and as a best practice, you should always deploy infrastructure across at least two Availability Zones. And some AWS services like Elastic Load Balancing, Amazon SQS, and Amazon SNS already do this for you. 
+
+We also talked about Edge locations and how you can deploy content there to speed up delivery to your customers. We even touched upon edge devices like AWS Outposts which allow you to run AWS infrastructure right in your own data center. 
+
+Another thing we discussed was how to provision AWS resources through various options, such as the AWS Management Console, the SDK, CLI, AWS Elastic Beanstalk, and AWS CloudFormation, where you learned how you can set up your infrastructure as code. 
+
+I hope you learned how globally available AWS is and how easy it is to get started with provisioning resources.
